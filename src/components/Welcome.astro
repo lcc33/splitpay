@@ -1,0 +1,194 @@
+---
+import background from "../assets/splitpay.png";
+---
+
+<style>
+  :root {
+    --primary-color: #3245ff;
+    --secondary-color: #6c7aeb;
+    --accent-color: #00b894;
+    --text-color: #333;
+    --light-text-color: #666;
+    --background-opacity: rgba(255, 255, 255, 0.95);
+    --box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    --border-radius: 12px;
+    --button-radius: 8px;
+    --font-family-base: "Inter", "Roboto", "Helvetica Neue", "Arial", sans-serif;
+  }
+
+  #background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(100px);
+    opacity: 0.7;
+  }
+
+  #container {
+    font-family: var(--font-family-base);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(
+      135deg,
+      var(--secondary-color) 0%,
+      var(--primary-color) 100%
+    );
+  }
+
+  main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  #hero {
+    background: var(--background-opacity);
+    border-radius: var(--border-radius);
+    padding: 40px 30px;
+    box-shadow: var(--box-shadow);
+    max-width: 450px;
+    text-align: center;
+  }
+
+  #hero-logo {
+    width: 200px;
+    border-radius: 50%;
+    height: 200px;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.384));
+    transition: all 0.3s ease-in-out;
+  }
+  #hero-logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.767));
+  }
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+    font-weight: 700;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--light-text-color);
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-color);
+    font-size: 1rem;
+  }
+
+  .feature-item svg {
+    width: 24px;
+    height: 24px;
+    color: var(--accent-color);
+  }
+
+  .get-started-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 14px 28px;
+    border-radius: var(--button-radius);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
+  }
+
+  .get-started-button:hover {
+    background-color: #009477;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    #hero {
+      padding: 30px 20px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .features {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .feature-item {
+      font-size: 0.95rem;
+    }
+
+    .get-started-button {
+      padding: 12px 24px;
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<div id="container">
+  <img id="background" src={background.src} alt="" fetchpriority="high" />
+  <main>
+    <section id="hero">
+      <img src={background.src} alt="SpliitPay Logo" id="hero-logo" />
+      <h1>Welcome to SpliitPay</h1>
+      <p class="tagline">
+        Effortlessly split bills and share expenses with friends and groups.
+      </p>
+      <div class="features">
+        <div class="feature-item">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              fill-rule="evenodd"
+              d="M12 2.25c-5.384 0-9.75 4.366-9.75 9.75s4.366 9.75 9.75 9.75 9.75-4.366 9.75-9.75S17.384 2.25 12 2.25zM12 7.5a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zM12 16.5a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span>Create Expense Groups</span>
+        </div>
+        <div class="feature-item">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              fill-rule="evenodd"
+              d="M12 2.25c-5.384 0-9.75 4.366-9.75 9.75s4.366 9.75 9.75 9.75 9.75-4.366 9.75-9.75S17.384 2.25 12 2.25zM9.75 9a.75.75 0 00-1.5 0v4.5a.75.75 0 101.5 0V9zm4.5 0a.75.75 0 00-1.5 0v4.5a.75.75 0 101.5 0V9zm3.75 3.75a.75.75 0 10-1.5 0v.75a.75.75 0 101.5 0v-.75z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span>Split Bills Easily</span>
+        </div>
+        <div class="feature-item">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 15a3 3 0 100-6 3 3 0 000 6zm0-8a5 5 0 015 5 5 5 0 01-4.97 4.97l-2.516 1.258a.75.75 0 01-.968-.233l-2.516-1.258A5 5 0 017 10a5 5 0 015-5z"
+            ></path>
+          </svg>
+          <span>Track Balances</span>
+        </div>
+      </div>
+      <a href="/Home" class="get-started-button">Get Started</a>
+    </section>
+  </main>
+</div>
