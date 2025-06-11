@@ -1,8 +1,96 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import "../styles/index.css";
 ---
 
 <Layout>
-	<Welcome />
+  <Navbar />
+
+  <div class="animated-bg"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="floating-elements">
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+    </div>
+
+    <div class="hero-content">
+      <h1>Split. Track. Pay. Together.</h1>
+      <p>
+        Manage shared expenses with ease. Whether it's rent, dinner, or travel —
+        SpliitPay makes sure everyone pays their part.
+      </p>
+      <a href="/Login">
+        <button class="cta-button">Get Started</button>
+      </a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2 class="section-title2">Why SpliitPay?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3>Group Tracking</h3>
+        <p>
+          Track who owes who and how much — in real time. Never lose track of
+          shared expenses again.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Secure Payments</h3>
+        <p>
+          Make fast, secure transactions with one tap. Your financial data is
+          protected with bank-level security.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✂️</div>
+        <h3>Split Anything</h3>
+        <p>
+          Bills, groceries, transport — anything can be split. Flexible
+          splitting options for any scenario.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <h2 class="section-title">How It Works</h2>
+    <div class="steps-container">
+      <ol class="steps-list">
+        <li class="step-item">
+          <h4>Create a group or event</h4>
+          <p>
+            Start by creating a group for your shared expenses or specific event
+          </p>
+        </li>
+        <li class="step-item">
+          <h4>Add your expenses and participants</h4>
+          <p>
+            Input all expenses and add the people who need to split the costs
+          </p>
+        </li>
+        <li class="step-item">
+          <h4>SpliitPay does the math for everyone</h4>
+          <p>Our smart algorithm calculates who owes what automatically</p>
+        </li>
+        <li class="step-item">
+          <h4>Settle payments directly or via linked wallets</h4>
+          <p>Pay your share instantly through integrated payment methods</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <footer
+    style="text-align:center; padding: 2rem 0 1rem 0; background: transparent; color: #000000; font-size: 1.3rem; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"
+  >
+    &copy; {new Date().getFullYear()} SplitPay | Kindra. All rights reserved.
+  </footer>
 </Layout>

@@ -1,5 +1,5 @@
 ---
-const { user } = Astro.props;
+
 ---
 
 <style>
@@ -24,7 +24,8 @@ const { user } = Astro.props;
     background: var(--background-white);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    position: sticky;
+    position: fixed;
+    width: 100%;
     top: 0;
     z-index: 1000;
     box-shadow: var(--shadow-light);
@@ -51,6 +52,8 @@ const { user } = Astro.props;
     letter-spacing: -0.5px;
     transition: var(--transition);
     position: relative;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   }
 
   .logo::after {
@@ -81,161 +84,32 @@ const { user } = Astro.props;
   .nav-link {
     text-decoration: none;
     color: var(--text-medium);
-    font-weight: 500;
+    font-weight: 900;
     font-size: 1rem;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
     padding: 0.5rem 1rem;
     border-radius: 8px;
     transition: var(--transition);
     position: relative;
   }
 
-  .nav-link:hover {
-    color: var(--text-dark);
-    background: var(--background-light);
-  }
-
-  /* Button Styles */
-  .btn-login,
-  .btn-signup {
-    padding: 0.7rem 1.5rem;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: var(--transition);
-    border: 2px solid transparent;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn-login {
-    color: var(--text-dark);
-    border: 2px solid #e2e8f0;
-    background: var(--background-white);
-  }
-
-  .btn-login:hover {
-    border-color: #667eea;
-    color: #667eea;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-  }
-
-  .btn-signup {
-    background: var(--primary-gradient);
-    color: var(--text-white);
-    margin-left: 0.5rem;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-  }
-
-  .btn-signup:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
-  }
-
-  /* Avatar Dropdown */
-  .avatar-dropdown {
-    position: relative;
-    margin-left: 1rem;
-  }
-
-  .avatar-toggle {
-    display: none;
-  }
-
-  .avatar-label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    background: var(--background-light);
-    border: 2px solid rgba(102, 126, 234, 0.1);
-    transition: var(--transition);
-  }
-
-  .avatar-label:hover {
-    background: rgba(102, 126, 234, 0.05);
-    border-color: rgba(102, 126, 234, 0.2);
-  }
-
-  .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid transparent;
-    background: var(--primary-gradient);
-    padding: 2px;
-    margin-right: 12px;
-  }
-
-  .avatar-name {
-    font-weight: 600;
-    color: var(--text-dark);
-    font-size: 0.95rem;
-    margin-right: 8px;
-  }
-
-  .dropdown-arrow {
-    width: 16px;
-    height: 16px;
-    color: var(--text-light);
-    transition: transform 0.2s ease;
-  }
-
-  .avatar-toggle:checked + .avatar-label .dropdown-arrow {
-    transform: rotate(180deg);
-  }
-
-  .dropdown {
-    display: none;
+  .nav-link::after {
+    content: "";
     position: absolute;
-    right: 0;
-    top: calc(100% + 12px);
-    background: var(--background-white);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: var(--border-radius);
-    min-width: 200px;
-    box-shadow: var(--shadow-medium);
-    padding: 0.5rem 0;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition:
-      opacity 0.2s ease,
-      transform 0.2s ease;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--secondary-gradient);
+    border-radius: 2px;
+    transition: width 0.3s ease;
   }
 
-  .avatar-toggle:checked ~ .dropdown {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
+  .nav-link:hover::after {
+    width: 100%;
   }
-
-  .dropdown li {
-    list-style: none;
-  }
-
-  .dropdown-link {
-    display: block;
-    padding: 0.75rem 1.5rem;
-    color: var(--text-medium);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: var(--transition);
-  }
-
-  .dropdown-link:hover {
-    background: var(--background-light);
-    color: var(--text-dark);
-  }
-
-  .dropdown-divider {
-    height: 1px;
-    background: rgba(0, 0, 0, 0.08);
-    margin: 0.5rem 0;
-  }
+  /* Button Styles */
 
   .logout-btn {
     color: #e74c3c;
@@ -326,22 +200,19 @@ const { user } = Astro.props;
     }
 
     .nav-links .nav-link {
+      margin: 0 auto;
+      text-align: center;
       padding: 1rem 2rem;
       font-size: 1.1rem;
       border-radius: 0;
-      width: 100%;
+      width: 50%;
       display: block;
     }
-
-    .nav-links .btn-login,
     .nav-links .btn-signup {
-      margin: 0.5rem 2rem;
+      margin-bottom: 0.7rem;
+      margin-top: 1rem;
       text-align: center;
       border-radius: var(--border-radius);
-    }
-
-    .nav-links .btn-signup {
-      margin-left: 2rem;
     }
 
     .nav-toggle-label {
@@ -363,33 +234,6 @@ const { user } = Astro.props;
     .nav-toggle:checked ~ .nav-links {
       transform: translateX(0);
     }
-
-    .avatar-dropdown {
-      width: 100%;
-      margin: 1rem 0 0 0;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
-    }
-
-    .avatar-label {
-      margin: 0 2rem;
-      padding: 1rem;
-      border-radius: var(--border-radius);
-    }
-
-    .dropdown {
-      position: static;
-      box-shadow: none;
-      border: none;
-      background: var(--background-light);
-      margin: 0 2rem;
-      border-radius: var(--border-radius);
-      margin-top: 0.5rem;
-    }
-
-    .dropdown-link {
-      padding: 0.75rem 1.5rem;
-    }
   }
 
   @media (max-width: 480px) {
@@ -405,29 +249,12 @@ const { user } = Astro.props;
       padding: 0.9rem 1.5rem;
       font-size: 1rem;
     }
-
-    .nav-links .btn-login,
-    .nav-links .btn-signup {
-      margin: 0.5rem 1.5rem;
-    }
-
-    .nav-links .btn-signup {
-      margin-left: 1.5rem;
-    }
-
-    .avatar-label {
-      margin: 0 1.5rem;
-    }
-
-    .dropdown {
-      margin: 0 1.5rem;
-    }
   }
 </style>
 
 <nav class="navbar">
   <div class="container">
-    <a href="/Home" class="logo">SpliitPay</a>
+    <a href="./" class="logo">SplitPay</a>
     <input
       type="checkbox"
       id="nav-toggle"
@@ -439,21 +266,14 @@ const { user } = Astro.props;
     </label>
     <ul class="nav-links">
       <li>
-        <a href="/" class="nav-link"> Home </a>
+        <a href="./" class="nav-link omo"> Home </a>
       </li>
       <li>
-        <a href="/features" class="nav-link"> Features </a>
+        <a href="/features" class="nav-link omo"> Features </a>
       </li>
       <li>
-        <a href="/how-it-works" class="nav-link"> How It Works </a>
-      </li>
-      <li>
-        <a href="/login" class="nav-link btn-login"> Login </a>
-      </li>
-      <li>
-        <a href="/signup" class="nav-link btn-signup"> Sign Up </a>
+        <a href="/how-it-works" class="nav-link omo"> How It Works </a>
       </li>
     </ul>
-    ) }
   </div>
 </nav>
